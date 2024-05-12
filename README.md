@@ -38,6 +38,20 @@ Follow these instructions to run some scripts and experiment with Nushell.
    * Aliases are an important way to compress your commandline workflow, especially for frequently used commands. Type `lb`
      and follow in the same steps as above but launch something else.
    * Study the `bookmark-launcher.nu` file, hack on it, and add your own bookmarks.
+   * Next, let's try a custom completer
+6. Exit the current Nushell session with `exit`
+7. Start a new Nushell session and load our config for a custom completer
+   * ```shell
+     nu --env-config completer.nu --config ""
+     ```
+8. Type out the sample command and try out the auto-completion
+   * Type our `describe-color ` (including the space) and then press `Tab`. You should see the completion options like
+     the following.
+   * ```text
+     blue
+     red
+     green
+     ```
 
 
 ## Wish List
@@ -52,16 +66,21 @@ General clean-ups, TODOs and things I wish to implement for this project
 * [ ] What are the debugging and maybe other meta features of Nushell? Are there bells and whistles with regard to
   logging or maybe some statistics?
 * [x] DONE (`use ~/repos/opensource/nu_scripts/custom-completions/git/git-completions.nu *`) Load Nushell-maintained completions from ["nu_scripts"](https://github.com/nushell/nu_scripts/tree/4eab7ea772f0a288c99a79947dd332efc1884315/custom-completions)
-* [ ] (Update: no I want to fall back to Bash, I've already mastered that and I don't need completions with descriptions for fallback) Fallback to Fish for completions. This is pretty silly, because now I have four shells on my mac: Zsh (pre-installed,
-  but I don't use), Bash (my login shell and still the champion of marketshare), Nushell (my new favorite), and Fish 
-  filling in for completions that are missing in Nushell). See [this person's experience with Carapace and their decision
-  to use the Fish completer in Nushell](https://news.ycombinator.com/item?id=40131630).
+* [x] Custom completer.
+* [ ] Fallback to Bash for completions. While Carapace and Fish are interesting, I've already mastered Bash completions.
+  Also see [this person's experience with Carapace and their decision to use the Fish completer in Nushell](https://news.ycombinator.com/item?id=40131630).
 * [ ] How should I time nu startup? Does it have anything built-in to measure anything? It would be easy to just handwrite
   the couple lines but curious if there is something more interesting that I'm missing.
 * [ ] When I do `cp $nu.config-path ~/some-directo` and as I'm trying to autocomplete the directory name, I don't get
   completions, I just get `NO RECORDS FOUND`. But in some other contexts with `cp` I do get completion. What's going on?
   I have read that the fallback to file completions doesn't work in some cases.
-* [ ] How do errors work? I know there is a try/catch but I want a feel for it.k
+* [x] DONE How do errors work? I know there is a try/catch, but I want a feel for it.
+  * <https://www.nushell.sh/book/stdout_stderr_exit_codes.html#using-the-complete-command>
+  * What's the idiomatic way to throw a low-noise error? I don't always want the line of source thing. I just want red
+    text and a message. Solution: use `--unspanned`.
+  * Error handling behavior for external commands is a bit of a gotcha and will likely change, but I think it's
+    complicated so probably not soon. See <https://github.com/nushell/nushell/issues/10633>. I think I'm going to use
+    `| complete` a lot, which will be more robust but isn't really in the spirit of shell scripting. 
 
 
 ## Reference
