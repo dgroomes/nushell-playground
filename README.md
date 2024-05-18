@@ -45,7 +45,7 @@ Follow these instructions to run some scripts and experiment with Nushell.
      nu --env-config completer.nu --config ""
      ```
 8. Type out the sample command and try out the auto-completion
-   * Type our `describe-color ` (including the space) and then press `Tab`. You should see the completion options like
+   * Type out `describe-color ` (including the space) and then press `Tab`. You should see the completion options like
      the following.
    * ```text
      blue
@@ -67,8 +67,14 @@ General clean-ups, TODOs and things I wish to implement for this project
   logging or maybe some statistics?
 * [x] DONE (`use ~/repos/opensource/nu_scripts/custom-completions/git/git-completions.nu *`) Load Nushell-maintained completions from ["nu_scripts"](https://github.com/nushell/nu_scripts/tree/4eab7ea772f0a288c99a79947dd332efc1884315/custom-completions)
 * [x] Custom completer.
-* [ ] Fallback to Bash for completions. While Carapace and Fish are interesting, I've already mastered Bash completions.
+* [x] DONE (Implemented in my other codebase: <https://github.com/dgroomes/my-config/commit/177b8714141a93b4ed2f76b4ff30d9f60a065b44>) Fallback to Bash for completions. While Carapace and Fish are interesting, I've already mastered Bash completions.
   Also see [this person's experience with Carapace and their decision to use the Fish completer in Nushell](https://news.ycombinator.com/item?id=40131630).
+   * DONE Wrap my head around how to even trigger a Bash completion programmatically from even a non-Nushell context.
+   * DONE Wire up a custom completer. This will involve creating an executable Bash script that takes envrionment
+     variables like `COMP_LINE` and `COMP_POINT`, loads the 'bash-completion' library, autoloads the Bash completion
+     script for the "command-under-completion" and finally generates the completions. 
+   * SKIP (No it's fast. Computers these days are good) Do I need to keep a Bash subprocess running because it's so slow to start up and load completions, especially large
+     ones like `docker` (5,000 lines of Bash code).
 * [ ] How should I time nu startup? Does it have anything built-in to measure anything? It would be easy to just handwrite
   the couple lines but curious if there is something more interesting that I'm missing.
 * [ ] When I do `cp $nu.config-path ~/some-directo` and as I'm trying to autocomplete the directory name, I don't get
