@@ -20,7 +20,7 @@ Follow these instructions to run some scripts and experiment with Nushell.
      nu
      ```
 3. Import all exposed definitions from the `bookmark-launcher.nu` file.
-   * ```shell
+   * ```nushell
      use bookmark-launcher.nu *
      ```
 4. Try out a command and get a feel for completions
@@ -87,6 +87,10 @@ General clean-ups, TODOs and things I wish to implement for this project
   * Error handling behavior for external commands is a bit of a gotcha and will likely change, but I think it's
     complicated so probably not soon. See <https://github.com/nushell/nushell/issues/10633>. I think I'm going to use
     `| complete` a lot, which will be more robust but isn't really in the spirit of shell scripting. 
+* IN PROGRESS "Tic-Tac-Toe". This is an application of Nu the langauge plus an exploration of LLMs/Ollamas and
+  "tool support" (previously known as "function calling"?). This doesn't exactly fit in the "playground"-style
+  repository because it doesn't zero in on specific features of Nushell, but it's an application of it and I just need
+  a place to do this work.
 
 
 ## Reference
