@@ -14,7 +14,7 @@ for a few years, and it is rich with features at this point. This repository is 
 Follow these instructions to run some scripts and experiment with Nushell.
 
 1. Pre-requisite: Nushell
-   * I built it from source. I'm using 0.92.2.
+   * I installed it with Homebrew. I'm using 0.98.0.
 2. Start a Nushell session.
    * ```shell
      nu
@@ -52,6 +52,26 @@ Follow these instructions to run some scripts and experiment with Nushell.
      red
      green
      ```
+9. Now, let's try *overlays*
+   * ```nushell
+     overlay use bookmark-launcher.nu
+     ``` 
+   * Now you can use commands like `launch-bookmark`, just like before. The difference is that you can unload the
+     overlay. Try listing the overlays, then unloading the `bookmark-launcher` overlay and listing the overlays again.
+     Altogether, it should look like the following.
+   * ```text
+     $ overlay use bookmark-launcher.nu
+     $ overlay list
+     ╭───┬───────────────────╮
+     │ 0 │ zero              │
+     │ 1 │ bookmark-launcher │
+     ╰───┴───────────────────╯
+     $ overlay hide bookmark-launcher
+     $ overlay list
+     ╭───┬──────╮
+     │ 0 │ zero │
+     ╰───┴──────╯
+     ```
 
 
 ## Wish List
@@ -87,10 +107,14 @@ General clean-ups, TODOs and things I wish to implement for this project
   * Error handling behavior for external commands is a bit of a gotcha and will likely change, but I think it's
     complicated so probably not soon. See <https://github.com/nushell/nushell/issues/10633>. I think I'm going to use
     `| complete` a lot, which will be more robust but isn't really in the spirit of shell scripting. 
-* IN PROGRESS "Tic-Tac-Toe". This is an application of Nu the langauge plus an exploration of LLMs/Ollamas and
+* [ ] HOLD "Tic-Tac-Toe". This is an application of Nu the langauge plus an exploration of LLMs/Ollamas and
   "tool support" (previously known as "function calling"?). This doesn't exactly fit in the "playground"-style
   repository because it doesn't zero in on specific features of Nushell, but it's an application of it and I just need
   a place to do this work.
+* [x] DONE How do overlays work?
+  * <https://www.nushell.sh/book/overlays.html>
+  * I haven't totally grokked this. I think other Nushell users bind a 'reload overlay' command to make this workflow
+    even more compressed. 
 
 
 ## Reference
