@@ -101,10 +101,12 @@ export def --env overlay-all [] {
     #    $env.config = ($env.config | upsert hooks.pre_prompt { where $it != "# ERASE ME" })
     #
     let overlay_lines = $nu_files | each { $"overlay use ($in)" }
-    const ERASE_SNIPPET = '$env.config = ($env.config | upsert hooks.pre_prompt { where $it != "# ERASE ME" })'
-    let snippet = ["# ERASE ME" ...$overlay_lines $ERASE_SNIPPET] | str join (char newline)
 
-    print $snippet
+    # Note: I was having a really hard time using 'upsert' here. I can't explain why. Instead I'm using a more imperative
+    # approach and that's working.
+    const ERASE_SNIPPET = 'let hooks = $env.config.hooks.pre_prompt; let filtered = $hooks | where not ( ($it | describe) == "string" and ($it | str starts-with "# ERASE ME")); $env.config.hooks.pre_prompt = $filtered'
+
+    let snippet = ["# ERASE ME" ...$overlay_lines $ERASE_SNIPPET] | str join (char newline)
 
     $env.config = ($env.config | upsert hooks.pre_prompt {
         default [] | append $snippet
