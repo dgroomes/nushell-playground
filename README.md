@@ -115,6 +115,7 @@ General clean-ups, TODOs and things I wish to implement for this project
   * <https://www.nushell.sh/book/overlays.html>
   * I haven't totally grokked this. I think other Nushell users bind a 'reload overlay' command to make this workflow
     even more compressed. 
+* [x] DONE Hooks.
 
 
 ## Reference
