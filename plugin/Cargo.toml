@@ -1,0 +1,16 @@
+[package]
+name = "my-plugin"
+version = "0.1.0"
+edition = "2021"
+
+description = "My example Nushell plugin"
+license = "MIT"
+repository = "https://github.com/dgroomes/nushell-playground"
+
+[[bin]]
+name = "nu_plugin_my"
+path = "src/main.rs"
+
+[dependencies]
+nu-plugin = "0.101.0"
+nu-protocol = { version = "0.101.0", features = ["plugin"] }

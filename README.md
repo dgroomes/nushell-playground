@@ -78,7 +78,7 @@ Follow these instructions to run some scripts and experiment with Nushell.
 
 General clean-ups, TODOs and things I wish to implement for this project
 
-* [ ] Consider writing a plugin. Can I write a Nushell plugin in the Nu language itself?
+* [x] DONE Consider writing a plugin.
 * [x] DONE Make the auto-completion example my own.
 * [x] DONE (Answer: use the right arrow key) Figure out the auto-completion UX. I'm getting a bit confused about when/why it auto-completes from historical
   commands and how to choose that completion. If I press enter of course that just runs the text I've typed so far and if
