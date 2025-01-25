@@ -107,7 +107,7 @@ General clean-ups, TODOs and things I wish to implement for this project
   * Error handling behavior for external commands is a bit of a gotcha and will likely change, but I think it's
     complicated so probably not soon. See <https://github.com/nushell/nushell/issues/10633>. I think I'm going to use
     `| complete` a lot, which will be more robust but isn't really in the spirit of shell scripting. 
-* [ ] HOLD "Tic-Tac-Toe". This is an application of Nu the langauge plus an exploration of LLMs/Ollamas and
+* [x] DONE (moved to my <https://github.com/dgroomes/llm-playground>) Tic-Tac-Toe". This is an application of Nu the langauge plus an exploration of LLMs/Ollamas and
   "tool support" (previously known as "function calling"?). This doesn't exactly fit in the "playground"-style
   repository because it doesn't zero in on specific features of Nushell, but it's an application of it and I just need
   a place to do this work.
