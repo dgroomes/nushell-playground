@@ -15,15 +15,16 @@ Follow these instructions to run some scripts and experiment with Nushell.
 
 1. Pre-requisite: Nushell
    * I installed it with Homebrew. I'm using 0.98.0.
-2. Start a Nushell session.
-   * ```shell
-     nu
+2. Start a fresh Nushell session.
+3. Run a hello world script
+   * ```nushell
+     ./hello.nu
      ```
-3. Import all exposed definitions from the `bookmark-launcher.nu` file.
+4. Import all exposed definitions from the `bookmark-launcher.nu` file.
    * ```nushell
      use bookmark-launcher.nu *
      ```
-4. Try out a command and get a feel for completions
+5. Try out a command and get a feel for completions
    * Type `launch-b` and then press `Tab`. The full `launch-bookmark` command will appear.
    * Try `Tab` again and you will see `reference` and `fun` as suggestions. The `reference` suggestion is highlighted already.
    * Press `Tab` once more to cycle to the `fun` suggestion.
@@ -34,17 +35,17 @@ Follow these instructions to run some scripts and experiment with Nushell.
      ```
      You chose fun today. Launching https://youtube.com ...
      ```
-5. Try the `lb` alias
+6. Try the `lb` alias
    * Aliases are an important way to compress your commandline workflow, especially for frequently used commands. Type `lb`
      and follow in the same steps as above but launch something else.
    * Study the `bookmark-launcher.nu` file, hack on it, and add your own bookmarks.
    * Next, let's try a custom completer
-6. Exit the current Nushell session with `exit`
-7. Start a new Nushell session and load our config for a custom completer
+7. Exit the current Nushell session with `exit`
+8. Start a new Nushell session and load our config for a custom completer
    * ```shell
      nu --env-config completer.nu --config ""
      ```
-8. Type out the sample command and try out the auto-completion
+9. Type out the sample command and try out the auto-completion
    * Type out `describe-color ` (including the space) and then press `Tab`. You should see the completion options like
      the following.
    * ```text
@@ -52,26 +53,26 @@ Follow these instructions to run some scripts and experiment with Nushell.
      red
      green
      ```
-9. Now, let's try *overlays*
-   * ```nushell
-     overlay use bookmark-launcher.nu
-     ``` 
-   * Now you can use commands like `launch-bookmark`, just like before. The difference is that you can unload the
-     overlay. Try listing the overlays, then unloading the `bookmark-launcher` overlay and listing the overlays again.
-     Altogether, it should look like the following.
-   * ```text
-     $ overlay use bookmark-launcher.nu
-     $ overlay list
-     ╭───┬───────────────────╮
-     │ 0 │ zero              │
-     │ 1 │ bookmark-launcher │
-     ╰───┴───────────────────╯
-     $ overlay hide bookmark-launcher
-     $ overlay list
-     ╭───┬──────╮
-     │ 0 │ zero │
-     ╰───┴──────╯
-     ```
+10. Now, let's try *overlays*
+    * ```nushell
+      overlay use bookmark-launcher.nu
+      ``` 
+    * Now you can use commands like `launch-bookmark`, just like before. The difference is that you can unload the
+      overlay. Try listing the overlays, then unloading the `bookmark-launcher` overlay and listing the overlays again.
+      Altogether, it should look like the following.
+    * ```text
+      $ overlay use bookmark-launcher.nu
+      $ overlay list
+      ╭───┬───────────────────╮
+      │ 0 │ zero              │
+      │ 1 │ bookmark-launcher │
+      ╰───┴───────────────────╯
+      $ overlay hide bookmark-launcher
+      $ overlay list
+      ╭───┬──────╮
+      │ 0 │ zero │
+      ╰───┴──────╯
+      ```
 
 
 ## Wish List
